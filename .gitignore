@@ -1,4 +1,14 @@
-
-.DS_Store
+# created by virtualenv automatically
 .env
-.idea/
+.idea
+bin
+include
+lib
+pyvenv.cfg
+**/__pycache__/
+
+app/alembic/
+app/alembic.ini
+
+**.DS_Store
+app/app_logger.log

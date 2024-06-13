@@ -12,5 +12,3 @@ admin_router = APIRouter(prefix='/admin', tags=['Admin'])
 async def create_admin(current_user: admin_dep, request_body: AdminSchema, db: AsyncSession = Depends(get_async_session)):
     user = await AdminService.create_admin(db, request_body)
     return user
-
-
