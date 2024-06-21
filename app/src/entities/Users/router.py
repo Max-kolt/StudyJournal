@@ -1,24 +1,20 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
-from database import get_async_session
-from .repository import UserAccountRepository, UserRepository
+from src.entities.Auth.schema import admin_dep, auth_dep
 from .service import UserService
-from .schema import UserAccountSchema, UserSchema
+from.schema import UserAccountSchema, ChangePasswordSchema
+from database import get_async_session
+
+user_router = APIRouter(prefix='/user', tags=['User'])
 
 
-users_router = APIRouter(prefix='/users', tags=['Users'])
+@user_router.post('/create_account')
+async def create_account(request_data: UserAccountSchema, current_user: admin_dep, db: AsyncSession = Depends(get_async_session)):
+    new_account = await UserService.create_user_account(db, request_data)
+    return new_account
 
 
-@users_router.get('/get_user')
-async def get_user(user_id: str, db: AsyncSession = Depends(get_async_session)):
-    await UserRepository.get_by_id(db, user_id)
-
-
-@users_router.post('/create_user')
-async def create_user(request_data: UserSchema, db: AsyncSession = Depends(get_async_session)):
-    await UserRepository.create(db, **request_data.model_dump())
-
-@users_router.post('/create_user_account')
-async def create_user(request_data: UserAccountSchema, db: AsyncSession = Depends(get_async_session)):
-    await UserAccountRepository.create(db, **request_data.model_dump())
-
+@user_router.post('/change_password')
+async def create_account(request_data: ChangePasswordSchema, current_user: auth_dep, db: AsyncSession = Depends(get_async_session)):
+    is_changed = await UserService.change_password(db, request_data)
+    return {'ok': is_changed}

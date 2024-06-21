@@ -7,7 +7,19 @@ const authInterpretor = (config: any) => {
 };
 
 export const apiInstance = axios.create({
-  baseURL: `http://127.0.0.1:8000/api/v1`,
+  baseURL: `http://0.0.0.0:8000/api/v1`,
 });
 
 apiInstance.interceptors.request.use(authInterpretor);
+apiInstance.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    if (401 === error.response.status) {
+      useAuth().logOut;
+    } else {
+      return Promise.reject(error);
+    }
+  }
+);

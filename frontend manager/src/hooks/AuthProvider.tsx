@@ -34,6 +34,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       .then((value) => {
         const token = value.data["access_token"];
         localStorage.setItem("token", token);
+        localStorage.setItem("user", data.username);
         setToken(token);
         setUser(data.username);
         navigate("/");

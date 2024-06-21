@@ -7,7 +7,7 @@ type props = { children: React.ReactNode };
 
 export function TeacherPageLayout({ children }: props) {
   const currentPage = useLocation().pathname;
-  console.log(currentPage);
+
   return (
     <>
       <div className="fixed w-screen h-20 flex justify-between pl-3 items-center z-40 bg-white border-b border-primary2">
@@ -42,7 +42,7 @@ export function TeacherPageLayout({ children }: props) {
           >
             Мои группы
           </Link>
-          <Link
+          {/* <Link
             to="/homeworks"
             className={
               currentPage == "/homeworks"
@@ -51,10 +51,10 @@ export function TeacherPageLayout({ children }: props) {
             }
           >
             Домашние задания
-          </Link>
+          </Link> */}
         </nav>
         <div className="flex border-l items-center border-l-primary2 border-solid px-3 gap-2">
-          <NotificationButton />
+          {/* <NotificationButton /> */}
           <ProfileButton />
         </div>
       </div>

@@ -1,5 +1,9 @@
-import React from "react";
+import { SpecializationBlock } from "../components/Specialization/SpecializationBlock";
 
 export function SpecializaationsPage() {
-  return <></>;
+  return (
+    <div className="p-10 ">
+      <SpecializationBlock />
+    </div>
+  );
 }

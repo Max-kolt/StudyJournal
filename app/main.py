@@ -9,7 +9,7 @@ from database import engine
 from src import all_routers, Base
 from src.utils import database_filling
 
-app = FastAPI(root_path='/api/v1')
+app = FastAPI(root_path='/api/v1',)
 logger.add('logger.log', rotation="500 MB", compression="gz", level="DEBUG", diagnose=False, backtrace=False)
 
 for router in all_routers:

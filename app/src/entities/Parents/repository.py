@@ -15,10 +15,10 @@ class ParentRepository(BaseRepo):
     model = StudentParents
 
 
-admin_oauth2_bearer = OAuth2PasswordBearer(tokenUrl='auth/parent_login')
+parents_oauth2_bearer = OAuth2PasswordBearer(tokenUrl='auth/parent_login')
 
 
-async def verify_admin(token: Annotated[str, Depends(admin_oauth2_bearer)]):
+async def verify_parent(token: Annotated[str, Depends(parents_oauth2_bearer)]):
     try:
         payload = await AuthRepository.decode_token(token)
         expire: int = payload.get('exp')

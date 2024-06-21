@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MenuButton } from "../sharing/buttons/menu_button";
 import { useNavigate } from "react-router-dom";
+import { get_group_api } from "../../api/get_group_api";
 
 export function AcademicRecord() {
-  const [groupsList, setGroupsList] = useState([
-    { id: 1, url: "/group/404/academic_records/", name: "404" },
-    { id: 1, url: "/group/404/academic_records/", name: "404" },
-    { id: 1, url: "/group/404/academic_records/", name: "404" },
-    { id: 1, url: "/group/404/academic_records/", name: "404" },
-    { id: 1, url: "/group/404/academic_records/", name: "404" },
-  ]);
+  const [groupsList, setGroupsList] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    get_group_api().then((value) => {
+      setGroupsList(value.data);
+    });
+  }, []);
 
   return (
     <section className=" flex flex-col gap-5 border-2 border-primary p-6 bg-white">
@@ -26,9 +27,11 @@ export function AcademicRecord() {
             <MenuButton
               key={group.id}
               custom="px-4 py-2 bg-grey4 border border-grey4 hover:border-primary"
-              onClickHandler={() => navigate(group.url)}
+              onClickHandler={() =>
+                navigate("/group/" + group.id + "/academic_records/")
+              }
             >
-              {group.name}
+              {group.id}
             </MenuButton>
           );
         })}

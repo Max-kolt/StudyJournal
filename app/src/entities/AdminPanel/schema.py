@@ -11,4 +11,3 @@ class AdminSchema(BaseModel):
     password: str | None
 
 
-admin_dep = Annotated[dict, Depends(verify_admin)]

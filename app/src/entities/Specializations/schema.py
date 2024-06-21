@@ -6,7 +6,7 @@ class SpecializationSchema(BaseModel):
     qualification: str | None
 
 
-class EducationalCycleSpecialization(BaseModel):
-    specailization: int | SpecializationSchema
+class EducationalCycleSpecializationSchema(BaseModel):
+    specialization_id: int
     ed_cycle: int
 

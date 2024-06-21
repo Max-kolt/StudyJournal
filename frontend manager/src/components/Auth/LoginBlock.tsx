@@ -13,8 +13,6 @@ export function LoginBlock() {
   const auth = useAuth();
 
   const submit = () => {
-    // Логика запроса к API
-
     if (name == "" || password == "") {
       alert("Не все поля заполнены");
       return;

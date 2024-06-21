@@ -67,16 +67,7 @@ export function NavigationHeader() {
         >
           Студенты
         </Link>
-        <Link
-          to="/parents"
-          className={
-            currentPage == "/parents"
-              ? "text-primary px-7 py-4 text"
-              : "text-black px-7 py-4 rounded-lg hover:bg-grey4 hover:text-grey1 "
-          }
-        >
-          Родители
-        </Link>
+
         <Link
           to="/teachers"
           className={
@@ -89,7 +80,7 @@ export function NavigationHeader() {
         </Link>
       </nav>
       <div className="flex border-l items-center border-l-primary2 border-solid px-3 gap-2">
-        <NotificationButton />
+        {/* <NotificationButton /> */}
         <ProfileButton />
       </div>
     </div>

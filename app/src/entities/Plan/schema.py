@@ -13,4 +13,7 @@ class DisciplineSchema(BaseModel):
 
 
 class CycleDesciplineSchema(BaseModel):
-    educa
+    discipline_id: str
+    education_cycle_id: int
+    course_of_study: int
+    academic_hours: int

@@ -6,11 +6,17 @@ class UserSchema(BaseModel):
     fname: str
     lname: str
     mname: str
-    email: str
+    mail: str
     phone: str | None
     gender: Literal['male', 'female']
 
+
 class UserAccountSchema(BaseModel):
-    email: str
+    id: str
     password: str | None
-    
+
+
+class ChangePasswordSchema(BaseModel):
+    id: str
+    old_password: str
+    new_password: str

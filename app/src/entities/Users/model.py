@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Uuid, DateTime, func, Boolean, String, ForeignKey
+from sqlalchemy.orm import relationship
 
 from database import Base
 
@@ -12,10 +13,13 @@ class User(Base):
 
     fname = Column('fname', String)
     lname = Column('lname', String)
-    mname = Column("manema", String)
-    email = Column("email", String, unique=True)
+    mname = Column("mnema", String)
+    mail = Column("mail", String, unique=True)
     phone = Column('phone', String)
-    gander = Column('gander', String)
+    gender = Column('gender', String)
+    with_account = Column('with_account', Boolean, server_default='f')
+
+    account = relationship('UserAccount', back_populates='user', lazy='selectin')
     
     
 class UserAccount(Base):
@@ -27,3 +31,5 @@ class UserAccount(Base):
     is_active = Column("is_active", Boolean, server_default="t")
     avatar = Column('avatar', String)
     password = Column('password', String, nullable=False)
+
+    user = relationship(User, back_populates='account', lazy='selectin')

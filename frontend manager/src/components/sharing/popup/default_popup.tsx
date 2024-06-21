@@ -26,7 +26,7 @@ export function DefaultPopup({ children, clickHandler }: PopupProps) {
   }, [wrapperRef]);
 
   return (
-    <div className="fixed z-50" ref={wrapperRef}>
+    <div className="fixed z-50 top-0 left-0" ref={wrapperRef}>
       {children}
     </div>
   );

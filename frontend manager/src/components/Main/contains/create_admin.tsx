@@ -6,7 +6,7 @@ export function CreateAdmin() {
   const [click, isClicked] = useState(false);
 
   return (
-    <div className="w-full border rounded-xl border-primary2 py-1 px-5 flex items-center gap-2">
+    <div className="w-full border rounded-xl border-primary2 py-1 px-5 flex justify-between items-center gap-2">
       <h2>Создать нового админа</h2>
       <DefaultButton
         callbackHandler={() => isClicked(true)}

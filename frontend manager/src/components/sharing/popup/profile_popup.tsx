@@ -12,11 +12,11 @@ type ProfilePopupProps = {
 export function ProfilePopup({ clickHandler }: ProfilePopupProps) {
   const navigator = useNavigate();
   const auth = useAuth();
+  
 
   const profileLink = () => {
-    navigator(`/profile/${auth.user?.id}`);
+    navigator(`/profile/`);
   };
-  
 
   const logoutLink = () => {
     auth.logOut();

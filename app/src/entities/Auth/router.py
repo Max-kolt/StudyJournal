@@ -23,17 +23,19 @@ async def manager_login(form: Annotated[OAuth2PasswordRequestForm, Depends()], d
 
 @auth_router.post('/teacher_login')
 async def teacher_login(form: Annotated[OAuth2PasswordRequestForm, Depends()], db: AsyncSession = Depends(get_async_session)):
-    token = await TeacherService.login(db, form)
-    return {"access_token": token, "token_type": "bearer"}
+    token, user = await TeacherService.login(db, form)
+    return {"access_token": token, "token_type": "bearer", "user": user}
 
 
 @auth_router.post('/student_login')
 async def student_login(form: Annotated[OAuth2PasswordRequestForm, Depends()], db: AsyncSession = Depends(get_async_session)):
-    token = await StudentService.login(db, form)
-    return {"access_token": token, "token_type": "bearer"}
+    token, user = await StudentService.login(db, form)
+    return {"access_token": token, "token_type": "bearer", "user": user}
 
 
-@auth_router.post('/parent_login')
-async def parent_login(form: Annotated[OAuth2PasswordRequestForm, Depends()], db: AsyncSession = Depends(get_async_session)):
-    token = await ParentService.login(db, form)
-    return {"access_token": token, "token_type": "bearer"}
+
+#
+# @auth_router.post('/parent_login')
+# async def parent_login(form: Annotated[OAuth2PasswordRequestForm, Depends()], db: AsyncSession = Depends(get_async_session)):
+#     token = await ParentService.login(db, form)
+#     return {"access_token": token, "token_type": "bearer"}

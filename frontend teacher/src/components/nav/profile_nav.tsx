@@ -20,7 +20,7 @@ export function ProfileButton() {
         </div>
         <div>
           <p className="p_small">Преподаватель</p>
-          <p className="p_bold">Романовская Н.В.</p>
+          <p className="p_bold">{localStorage.getItem("username")}</p>
         </div>
       </div>
       {isActive && <ProfilePopup clickHandler={activate} />}

@@ -7,7 +7,7 @@ export function MainPage() {
       <div className="h-fit w-auto p-10">
         <AcademicRecord />
       </div>
-      <MainPageLessonsView />
+      {/* <MainPageLessonsView /> */}
     </div>
   );
 }

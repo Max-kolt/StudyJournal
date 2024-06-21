@@ -15,5 +15,9 @@ export function LogoutConfirmPopup({ clickHandler }: LogoutConfirmPopupProps) {
     auth.logOut();
     navigator("/login");
   };
-  return <DefaultPopup clickHandler={clickHandler}></DefaultPopup>;
+  return (
+    <DefaultPopup clickHandler={clickHandler}>
+      <></>
+    </DefaultPopup>
+  );
 }

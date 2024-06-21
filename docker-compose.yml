@@ -4,3 +4,44 @@ services:
   api:
     build:
       context: ./app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env.docker
+
+  database:
+    build:
+      context: ./services/postgres
+    ports:
+      - '5432:5432'
+    env_file:
+      - .env.docker
+    environment:
+      - POSTGRES_PASSWORD=${DB_USER_PASSWORD}
+
+
+
+  frontend_manager:
+    build:
+      context: ./frontend manager
+    ports:
+      - "3000:3000"
+
+  frontend_teacher:
+    build:
+      context: ./frontend teacher
+    ports:
+      - "3002:3002"
+
+  frontend_student:
+    build:
+      context: ./frontend student
+    ports:
+      - "3001:3001"
+
+  web_server:
+    build:
+      context: ./services/nginx
+    ports:
+      - "80:80"
+

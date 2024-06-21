@@ -25,6 +25,7 @@ class BaseRepo:
         await db.execute(query)
         await db.commit()
 
+
     @classmethod
     async def delete(cls, db: AsyncSession, model_id: str | int):
         query = delete(cls.model).where(cls.model.id == model_id)
@@ -43,6 +44,6 @@ class BaseRepo:
         return (await db.execute(query)).scalars().all()
 
     @classmethod
-    async def get_by_id(cls, db: AsyncSession, model_id: str):
+    async def get_by_id(cls, db: AsyncSession, model_id: str|int) -> model:
         query = select(cls.model).where(cls.model.id == model_id)
         return (await db.execute(query)).scalar_one_or_none()
