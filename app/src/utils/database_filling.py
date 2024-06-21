@@ -193,7 +193,7 @@ async def database_filling(con: AsyncConnection):
         f"(2, 4, '312', 'Пятница');"
     ))
 
-    start = datetime.datetime.strptime("11-01-2023", "%d-%m-%Y")
+    start = datetime.datetime.strptime("11-01-2024", "%d-%m-%Y")
     end = datetime.datetime.strptime("25-06-2024", "%d-%m-%Y")
     date_generated = [start + datetime.timedelta(days=x) for x in range(0, (end - start).days)]
 
