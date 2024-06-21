@@ -193,7 +193,7 @@ async def database_filling(con: AsyncConnection):
         f"(2, 4, '312', 'Пятница');"
     ))
 
-    start = datetime.datetime.strptime("11-01-2024", "%d-%m-%Y")
+    start = datetime.datetime.strptime("11-10-2023", "%d-%m-%Y")
     end = datetime.datetime.strptime("20-07-2024", "%d-%m-%Y")
     date_generated = [start + datetime.timedelta(days=x) for x in range(0, (end - start).days)]
 
@@ -203,7 +203,7 @@ async def database_filling(con: AsyncConnection):
             f"select id, '{date.date()}' from classes_timetable where week_day='{weekdays[date.weekday()]}';"
         ))
 
-    start = datetime.datetime.strptime("11-01-2024", "%d-%m-%Y")
+    start = datetime.datetime.strptime("11-10-2023", "%d-%m-%Y")
     end = datetime.datetime.strptime("20-07-2024", "%d-%m-%Y")
     date_generated = [start + datetime.timedelta(days=x) for x in range(0, (end - start).days)]
 

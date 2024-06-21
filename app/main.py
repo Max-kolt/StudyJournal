@@ -42,5 +42,6 @@ async def startup():
         except Exception as e:
             print(e)
 
+
 if __name__ == "__main__":
     uvicorn.run("main:app", reload=True)
