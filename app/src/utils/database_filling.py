@@ -216,12 +216,12 @@ async def database_filling(con: AsyncConnection):
         ))
 
 
-    await con.execute(text(
-        f"insert into student_evaluation (student_id, lesson_id, mark) values"
-        f"(8, 17, 5),"
-        f"(8, 15, 5),"
-        f"(8, 19, 4);"
-    ))
+    # await con.execute(text(
+    #     f"insert into student_evaluation (student_id, lesson_id, mark) values"
+    #     f"(8, 17, 5),"
+    #     f"(8, 15, 5),"
+    #     f"(8, 19, 4);"
+    # ))
 
     await con.execute(text(
         f"insert into users_accounts (id, password)"
